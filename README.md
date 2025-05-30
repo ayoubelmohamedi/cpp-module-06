@@ -27,5 +27,13 @@ This module is designed to demonstrate the different casts in CPP.
     Errors:
     1 - If a conversion to char is not displayable, prints an informative message.
         such as : "Non displayable"
-    2 - If a conversion does not make any sense or overflows, display a message to inform
+    2 - If a conversion does not make any sense or overflows, display a message to inform ("impossible")
         the user that the type conversion is impossible. 
+    
+    output format:
+
+    /convert 0
+    char: Non displayable
+    int: 0
+    float: 0.0f
+    double: 0.0 
