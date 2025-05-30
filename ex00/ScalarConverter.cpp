@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-moha <ael-moha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 01:31:28 by ael-moha          #+#    #+#             */
-/*   Updated: 2025/05/30 20:05:01 by ael-moha         ###   ########.fr       */
+/*   Updated: 2025/05/30 21:54:14 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void to_char(const std::string &literal)
 
 void to_int (const std::string &literal)
 {
-    int d = static_cast<int>(std::atoi(literal.c_str()));
+    long d = static_cast<int>(std::atoi(literal.c_str()));
 
     if (d < 0 || d > 127)
         std::cout << "char: impossible" << std::endl;
@@ -67,8 +67,15 @@ void to_int (const std::string &literal)
     else
         std::cout << "char: "  <<  static_cast<char>(d) << std::endl; 
 
-    std::cout << "int: " << d << std::endl;
-    std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f" << std::endl;
+    if (d > INT_MAX || d < INT_MIN) 
+        std::cout << "int: impossible" << std::endl;
+    else
+        std::cout << "int: " << static_cast<int>(d) << std::endl;
+    
+    if (d > FLT_MAX || d < FLT_MIN)
+        std::cout << "float: impossible" << std::endl;
+    else
+        std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f" << std::endl;
     std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(d) << std::endl;
 }
 
@@ -120,24 +127,29 @@ void ScalarConverter::convert(const std::string &literal)
 { 
     if (is_char(literal))
     {
+        
+        std::cout << "to char " << std::endl;
         to_char(literal);
     }
     else if (is_int(literal))
     {
-
+        std::cout << "to int " << std::endl;
+        to_int(literal);
     }
     else if (is_float(literal))
     {
+
         std::cout << "to float " << std::endl;
         to_float(literal);
     }
     else if (is_double(literal))
     {
+        std::cout << "to double " << std::endl;
         to_double(literal);
     }
     else 
     {
-        
+         std::cout << "Error: invalid literal" << std::endl;
     }
     
 }
