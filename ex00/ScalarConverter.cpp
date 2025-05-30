@@ -6,7 +6,7 @@
 /*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 01:31:28 by ael-moha          #+#    #+#             */
-/*   Updated: 2025/05/30 22:03:11 by macbookpro       ###   ########.fr       */
+/*   Updated: 2025/05/30 22:10:23 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void to_int (const std::string &literal)
     else
         std::cout << "int: " << static_cast<int>(d) << std::endl;
     
-    if (d > FLT_MAX || d < FLT_MIN)
+    if (d > FLT_MAX || d < -FLT_MAX)
         std::cout << "float: impossible" << std::endl;
     else
         std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f" << std::endl;
@@ -115,7 +115,7 @@ void to_double(const std::string &literal)
     else
         std::cout << "int: " << static_cast<int>(val) << std::endl;
     
-    if (val > FLT_MAX || val < FLT_MIN)
+    if (val > FLT_MAX || val < -FLT_MAX)
         std::cout << "float: impossible" << std::endl;
     else
         std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(val) << "f" << std::endl;
