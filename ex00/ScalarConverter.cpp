@@ -6,7 +6,7 @@
 /*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 01:31:28 by ael-moha          #+#    #+#             */
-/*   Updated: 2025/05/30 22:10:23 by macbookpro       ###   ########.fr       */
+/*   Updated: 2025/05/30 22:21:47 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,10 @@ void to_char(const std::string &literal)
     std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(c) << std::endl;
 }
 
-void to_int (const std::string &literal)
+void to_int(const std::string &literal)
 {
     long d = static_cast<long>(std::atol(literal.c_str()));
+    double l = std::stod(literal.c_str());
 
     if (d < 0 || d > 127)
         std::cout << "char: impossible" << std::endl;
@@ -71,8 +72,10 @@ void to_int (const std::string &literal)
         std::cout << "int: impossible" << std::endl;
     else
         std::cout << "int: " << static_cast<int>(d) << std::endl;
+
     
-    if (d > FLT_MAX || d < -FLT_MAX)
+    float f = static_cast<float>(d); 
+    if (l != f)
         std::cout << "float: impossible" << std::endl;
     else
         std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f" << std::endl;
@@ -81,7 +84,8 @@ void to_int (const std::string &literal)
 
 void to_float(const std::string &literal)
 {
-    float val = std::atof(literal.c_str());
+    float val = std::stof(literal.c_str());
+    double d = std::stod(literal.c_str());
     
     if (std::isnan(val) || std::isinf(val) || val < 0 || val > 127)
         std::cout << "char: impossible\n";
@@ -90,17 +94,23 @@ void to_float(const std::string &literal)
     else
         std::cout << "char: '" << static_cast<char>(val) << "'\n";
     long l = static_cast<long>(val);
+
     if (l > INT_MAX || l < INT_MIN) 
         std::cout << "int: impossible" << std::endl;
     else
         std::cout << "int: " << static_cast<int>(val) << std::endl;
-    std::cout << "float: " << std::fixed << std::setprecision(1) << val << "f" << std::endl;
+
+    if (val != d) 
+        std::cout << "float: impossible" << std::endl;
+    else
+        std::cout << "float: " << std::fixed << std::setprecision(1) << val << "f" << std::endl;
     std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(val) << std::endl; 
 }
 
 void to_double(const std::string &literal)
 {
     double val = std::stod(literal.c_str());
+    float f = std::stof(literal.c_str());
 
     if (std::isnan(val) || std::isinf(val) || val < 0 || val > 127)
         std::cout << "char: impossible\n";
@@ -115,7 +125,7 @@ void to_double(const std::string &literal)
     else
         std::cout << "int: " << static_cast<int>(val) << std::endl;
     
-    if (val > FLT_MAX || val < -FLT_MAX)
+    if (f != val)
         std::cout << "float: impossible" << std::endl;
     else
         std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(val) << "f" << std::endl;
@@ -127,7 +137,6 @@ void ScalarConverter::convert(const std::string &literal)
 { 
     if (is_char(literal))
     {
-        
         std::cout << "to char " << std::endl;
         to_char(literal);
     }
