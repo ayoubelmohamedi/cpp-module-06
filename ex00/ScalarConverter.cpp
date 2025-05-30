@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-moha <ael-moha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 01:31:28 by ael-moha          #+#    #+#             */
-/*   Updated: 2025/05/30 14:05:16 by ael-moha         ###   ########.fr       */
+/*   Updated: 2025/05/30 15:15:43 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,18 @@ bool is_float_ps(const std::string &literal)
     return (literal == "nanf" || literal == "+inff" || literal == "-inff");
 }
 
+bool is_double(const std::string &literal)
+{
+    if (literal.empty())
+        return (false);
+    char *end;
+    errno = 0;
+    std::strtod(literal.c_str(), &end);
+    if (*end != 0 || errno == ERANGE)
+        return (false);
+    return (true);
+}
+
 bool is_double_ps(const std::string &literal)
 {
     return (literal == "nan" || literal == "+inf" || literal == "-inf");
@@ -93,7 +105,7 @@ bool is_double_ps(const std::string &literal)
 
 
 void ScalarConverter::convert(const std::string &literal)
-{
-    std::cout << "is float " << is_float(literal) << std::endl;
+{ 
+    std::cout << "is double " << is_double(literal) << std::endl;
     
 }
