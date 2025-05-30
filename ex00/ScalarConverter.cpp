@@ -6,7 +6,7 @@
 /*   By: ael-moha <ael-moha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 01:31:28 by ael-moha          #+#    #+#             */
-/*   Updated: 2025/05/29 22:32:12 by ael-moha         ###   ########.fr       */
+/*   Updated: 2025/05/30 13:54:56 by ael-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,16 @@ bool is_char(const std::string & literal)
 bool is_float(const std::string & literal)
 {
     size_t len = literal.length();
-    if (len <= 1 && (literal[len - 1] != 'F' && literal[len - 1] != 'f'))
+    size_t f_pos = literal.find_first_of("fF");
+    if (f_pos == std::string::npos || f_pos != len - 1 || literal.find_first_of("fF", f_pos + 1) != std::string::npos)
         return (false);
     
     std::string nbrPart = literal.substr(0, len - 1);
     char *end;
     errno = 0;
     std::strtof(nbrPart.c_str(), &end);
-
-    if ((nbrPart.find('.') == std::string::npos &&
-        nbrPart.find('e') == std::string::npos &&
-         nbrPart.find('E') == std::string::npos )
-        || *end != 0 || errno == ERANGE)
-        {
-        std::cout << " No exponent "  << std::endl;    
+    if (*end != 0 || errno == ERANGE)
         return (false);
-        }
 
     return (true);    
 }
