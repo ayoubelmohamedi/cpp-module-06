@@ -12,6 +12,9 @@ bool ScalarConverter::is_char(const std::string & literal)
 
 bool ScalarConverter::is_float(const std::string & literal)
 {
+    float val = std::atof(literal.c_str());
+    if (isnanf(val) || isinff(val))
+        return (is_float_ps(literal));
     size_t len = literal.length();
     size_t f_pos = literal.find_first_of("fF");
     if (f_pos == std::string::npos || f_pos != len - 1 || literal.find_first_of("fF", f_pos + 1) != std::string::npos)
@@ -23,7 +26,6 @@ bool ScalarConverter::is_float(const std::string & literal)
     std::strtof(nbrPart.c_str(), &end);
     if (*end != 0 || errno == ERANGE)
         return (false);
-
     return (true);    
 }
 
