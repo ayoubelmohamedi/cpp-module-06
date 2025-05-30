@@ -1,6 +1,6 @@
 
-CXX      := c++
-CXXFLAGS := -Wall -Wextra -Werror -std=c++98
+CXX      := c++						
+CXXFLAGS := -Wall -Wextra -Werror # -std=c++98 TODO : add later 
 
 SRCS := ScalarConverter.cpp main.cpp utils_checks.cpp
 OBJS := $(SRCS:.cpp=.o)
