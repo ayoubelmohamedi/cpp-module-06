@@ -6,7 +6,7 @@
 /*   By: ael-moha <ael-moha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 01:31:28 by ael-moha          #+#    #+#             */
-/*   Updated: 2025/05/30 16:38:23 by ael-moha         ###   ########.fr       */
+/*   Updated: 2025/05/30 18:47:50 by ael-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,27 @@ void to_int (const std::string &literal)
         std::cout << "char: "  <<  static_cast<char>(d) << std::endl; 
 
     std::cout << "int: " << d << std::endl;
-    std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << "f" << std::endl;
-    std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(c) << std::endl;
+    std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f" << std::endl;
+    std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(d) << std::endl;
+}
+
+void to_float(const std::string &literal)
+{
+    float val = std::atof(literal.c_str());
+    
+    if (std::isnan(val) || std::isinf(val) || val < 0 || val > 127)
+        std::cout << "char: impossible\n";
+    else if (!isprint(static_cast<char>(val)))
+        std::cout << "char: Non displayable\n";
+    else
+        std::cout << "char: '" << static_cast<char>(val) << "'\n";
+    long l = static_cast<long>(val);
+    if (l > INT_MAX || l < INT_MAX) 
+        std::cout << "int: impossible" << std::endl;
+    else
+        std::cout << "int: " << static_cast<int>(val) << std::endl;
+    std::cout << "float: " << std::fixed << std::setprecision(1) << val << "f" << std::endl;
+    std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(val) << std::endl; 
 }
 
 void ScalarConverter::convert(const std::string &literal)
@@ -84,29 +103,15 @@ void ScalarConverter::convert(const std::string &literal)
     }
     else if (is_float(literal))
     {
-
+        std::cout << "to float " << std::endl;
+        to_float(literal);
     }
     else if (is_double(literal))
     {
         
     }
-    else if (is_float_ps(literal))
-    {
-        
-    }
-    else if (is_double_ps(literal))
-    {
-        
-    }
     else 
     {
-        // error ? 
-    std::cout << "========Not charrr===========" << std::endl;
-    char c = literal[0];
-    std::cout << "char: "  <<  static_cast<char>(c) << std::endl; 
-    std::cout << "int: " << static_cast<int>(c) << std::endl;
-    std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << "f" << std::endl;
-    std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(c) << std::endl;
         
     }
     
