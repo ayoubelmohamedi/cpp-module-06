@@ -6,7 +6,7 @@
 /*   By: ael-moha <ael-moha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 01:32:27 by ael-moha          #+#    #+#             */
-/*   Updated: 2025/05/30 16:46:06 by ael-moha         ###   ########.fr       */
+/*   Updated: 2025/05/30 19:17:41 by ael-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <cfloat> 
 
 class ScalarConverter {
 private:
