@@ -26,7 +26,7 @@ bool ScalarConverter::is_float(const std::string & literal)
     std::strtof(nbrPart.c_str(), &end);
     if (*end != 0 || errno == ERANGE)
         return (false);
-    return (true);    
+    return (true);
 }
 
 bool ScalarConverter::is_int(const std::string &literal)
@@ -62,9 +62,11 @@ bool ScalarConverter::is_double(const std::string &literal)
         return (false);
     char *end;
     errno = 0;
-    std::strtod(literal.c_str(), &end);
+    double d = std::strtod(literal.c_str(), &end);
     if (*end != 0 || errno == ERANGE)
-        return (false);
+        return (false); 
+    if (isnan(d) || isinf(d))
+        return (is_double_ps(literal));
     return (true);
 }
 
