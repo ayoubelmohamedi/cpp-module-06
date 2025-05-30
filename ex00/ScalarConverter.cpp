@@ -6,7 +6,7 @@
 /*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 01:31:28 by ael-moha          #+#    #+#             */
-/*   Updated: 2025/05/30 15:15:43 by macbookpro       ###   ########.fr       */
+/*   Updated: 2025/05/30 15:25:31 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,77 +35,35 @@
         the user that the type conversion is impossible. 
 */
 
-bool is_char(const std::string & literal)
-{
-    if (literal.length() == 1 && isalpha(literal[0]))
-        return (true);
-    return (false);
-}
 
-bool is_float(const std::string & literal)
-{
-    size_t len = literal.length();
-    size_t f_pos = literal.find_first_of("fF");
-    if (f_pos == std::string::npos || f_pos != len - 1 || literal.find_first_of("fF", f_pos + 1) != std::string::npos)
-        return (false);
-    
-    std::string nbrPart = literal.substr(0, len - 1);
-    char *end;
-    errno = 0;
-    std::strtof(nbrPart.c_str(), &end);
-    if (*end != 0 || errno == ERANGE)
-        return (false);
-
-    return (true);    
-}
-
-bool is_int(const std::string &literal)
-{
-    long nbr;
-    char *end;
-    size_t i = 0;
-    if (literal.empty())
-        return (false);
-    if (literal[i] == '+' || literal[i] == '-')
-        i++;
-    if (i == literal.length())
-        return (false);
-    for (; i < literal.length();  ++i)
-    {
-        if (!isdigit(literal[i]))
-            return (false);
-    }
-    nbr = std::strtol(literal.c_str(), &end, 10);
-    if (*end != '\0' || errno == ERANGE || nbr < INT_MIN || nbr > INT_MAX)
-        return false;
-    return (true);
-}
-
-bool is_float_ps(const std::string &literal)
-{
-    return (literal == "nanf" || literal == "+inff" || literal == "-inff");
-}
-
-bool is_double(const std::string &literal)
-{
-    if (literal.empty())
-        return (false);
-    char *end;
-    errno = 0;
-    std::strtod(literal.c_str(), &end);
-    if (*end != 0 || errno == ERANGE)
-        return (false);
-    return (true);
-}
-
-bool is_double_ps(const std::string &literal)
-{
-    return (literal == "nan" || literal == "+inf" || literal == "-inf");
-}
 
 
 void ScalarConverter::convert(const std::string &literal)
 { 
+    // if (is_char(literal))
+    // {
+        
+    // }
+    // else if (is_int(literal))
+    // {
+
+    // }
+    // else if (is_float(literal))
+    // {
+
+    // }
+    // else if (is_double(literal))
+    // {
+        
+    // }
+    // else if (is_float_ps(literal))
+    // {
+        
+    // }
+    // else if (is_double_ps(literal))
+    // {
+        
+    // }
     std::cout << "is double " << is_double(literal) << std::endl;
     
 }
