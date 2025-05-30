@@ -60,6 +60,8 @@ bool ScalarConverter::is_double(const std::string &literal)
 {
     if (literal.empty())
         return (false);
+    if (literal.find('.') == std::string::npos)
+        return (false);
     char *end;
     errno = 0;
     double d = std::strtod(literal.c_str(), &end);
