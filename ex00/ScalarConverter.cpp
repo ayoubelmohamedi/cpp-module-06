@@ -6,7 +6,7 @@
 /*   By: ael-moha <ael-moha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 01:31:28 by ael-moha          #+#    #+#             */
-/*   Updated: 2025/05/30 13:54:56 by ael-moha         ###   ########.fr       */
+/*   Updated: 2025/05/30 14:05:16 by ael-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,17 @@ bool is_int(const std::string &literal)
         return false;
     return (true);
 }
+
+bool is_float_ps(const std::string &literal)
+{
+    return (literal == "nanf" || literal == "+inff" || literal == "-inff");
+}
+
+bool is_double_ps(const std::string &literal)
+{
+    return (literal == "nan" || literal == "+inf" || literal == "-inf");
+}
+
 
 void ScalarConverter::convert(const std::string &literal)
 {
