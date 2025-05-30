@@ -13,7 +13,7 @@ bool ScalarConverter::is_char(const std::string & literal)
 bool ScalarConverter::is_float(const std::string & literal)
 {
     float val = std::atof(literal.c_str());
-    if (isnanf(val) || isinff(val))
+    if (isnan(val) || isinf(val))
         return (is_float_ps(literal));
     size_t len = literal.length();
     size_t f_pos = literal.find_first_of("fF");
