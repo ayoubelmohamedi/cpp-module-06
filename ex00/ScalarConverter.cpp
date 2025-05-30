@@ -6,7 +6,7 @@
 /*   By: ael-moha <ael-moha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 01:31:28 by ael-moha          #+#    #+#             */
-/*   Updated: 2025/05/30 16:27:09 by ael-moha         ###   ########.fr       */
+/*   Updated: 2025/05/30 16:38:23 by ael-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,31 @@
 void to_char(const std::string &literal)
 {
     char c = static_cast<char>(literal[0]);
-    
-    std::cout << "char: "  <<  static_cast<char>(c) << std::endl; 
+   
+    if (!isprint(c))
+        std::cout << "char: Non displayable" << std::endl;
+    else
+        std::cout << "char: "  <<  static_cast<char>(c) << std::endl; 
     std::cout << "int: " << static_cast<int>(c) << std::endl;
     std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << "f" << std::endl;
     std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(c) << std::endl;
 }
 
+void to_int (const std::string &literal)
+{
+    int d = static_cast<int>(std::atoi(literal.c_str()));
+
+    if (d < 0 || d > 127)
+        std::cout << "char: impossible" << std::endl;
+    else if (!isprint(static_cast<char>(d)))
+        std::cout << "char: Non displayable" << std::endl;
+    else
+        std::cout << "char: "  <<  static_cast<char>(d) << std::endl; 
+
+    std::cout << "int: " << d << std::endl;
+    std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << "f" << std::endl;
+    std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(c) << std::endl;
+}
 
 void ScalarConverter::convert(const std::string &literal)
 { 
