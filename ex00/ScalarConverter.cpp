@@ -6,7 +6,7 @@
 /*   By: ael-moha <ael-moha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 01:31:28 by ael-moha          #+#    #+#             */
-/*   Updated: 2025/05/30 19:20:34 by ael-moha         ###   ########.fr       */
+/*   Updated: 2025/05/30 20:05:01 by ael-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void to_float(const std::string &literal)
     else
         std::cout << "char: '" << static_cast<char>(val) << "'\n";
     long l = static_cast<long>(val);
-    if (l > INT_MAX || l < INT_MAX) 
+    if (l > INT_MAX || l < INT_MIN) 
         std::cout << "int: impossible" << std::endl;
     else
         std::cout << "int: " << static_cast<int>(val) << std::endl;
@@ -103,7 +103,7 @@ void to_double(const std::string &literal)
         std::cout << "char: '" << static_cast<char>(val) << "'\n";
     
     long l = static_cast<long>(val);
-    if (l > INT_MAX || l < INT_MAX) 
+    if (l > INT_MAX || l < INT_MIN) 
         std::cout << "int: impossible" << std::endl;
     else
         std::cout << "int: " << static_cast<int>(val) << std::endl;
@@ -133,7 +133,7 @@ void ScalarConverter::convert(const std::string &literal)
     }
     else if (is_double(literal))
     {
-        
+        to_double(literal);
     }
     else 
     {
