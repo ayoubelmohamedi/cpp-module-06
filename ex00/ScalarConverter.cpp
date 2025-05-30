@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
+/*   By: ael-moha <ael-moha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 01:31:28 by ael-moha          #+#    #+#             */
-/*   Updated: 2025/05/30 15:25:31 by macbookpro       ###   ########.fr       */
+/*   Updated: 2025/05/30 16:27:09 by ael-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /*
     parms: string literal => belongs to one of these scalars {char, int, float, double}
     Except for 'char', only decimal notation will be used 
-    if char is non displayable = 
+    if char is non displayable =  Non displayable
     
     1 - casting between scalars, we use static_cast
     2- determine type: + if (len == 1 and not digit) : return char
@@ -35,35 +35,61 @@
         the user that the type conversion is impossible. 
 */
 
+/*
+    /convert 0
+    char: Non displayable
+    int: 0
+    float: 0.0f
+    double: 0.0 
+*/
 
+void to_char(const std::string &literal)
+{
+    char c = static_cast<char>(literal[0]);
+    
+    std::cout << "char: "  <<  static_cast<char>(c) << std::endl; 
+    std::cout << "int: " << static_cast<int>(c) << std::endl;
+    std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << "f" << std::endl;
+    std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(c) << std::endl;
+}
 
 
 void ScalarConverter::convert(const std::string &literal)
 { 
-    // if (is_char(literal))
-    // {
-        
-    // }
-    // else if (is_int(literal))
-    // {
+    if (is_char(literal))
+    {
+        to_char(literal);
+    }
+    else if (is_int(literal))
+    {
 
-    // }
-    // else if (is_float(literal))
-    // {
+    }
+    else if (is_float(literal))
+    {
 
-    // }
-    // else if (is_double(literal))
-    // {
+    }
+    else if (is_double(literal))
+    {
         
-    // }
-    // else if (is_float_ps(literal))
-    // {
+    }
+    else if (is_float_ps(literal))
+    {
         
-    // }
-    // else if (is_double_ps(literal))
-    // {
+    }
+    else if (is_double_ps(literal))
+    {
         
-    // }
-    std::cout << "is double " << is_double(literal) << std::endl;
+    }
+    else 
+    {
+        // error ? 
+    std::cout << "========Not charrr===========" << std::endl;
+    char c = literal[0];
+    std::cout << "char: "  <<  static_cast<char>(c) << std::endl; 
+    std::cout << "int: " << static_cast<int>(c) << std::endl;
+    std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << "f" << std::endl;
+    std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(c) << std::endl;
+        
+    }
     
 }
