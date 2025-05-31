@@ -6,7 +6,7 @@
 /*   By: ael-moha <ael-moha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 01:32:27 by ael-moha          #+#    #+#             */
-/*   Updated: 2025/05/30 19:17:41 by ael-moha         ###   ########.fr       */
+/*   Updated: 2025/05/31 18:12:53 by ael-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 class ScalarConverter {
 private:
+    ScalarConverter();
     static bool is_char(const std::string & literal);
     static bool is_int(const std::string &literal);
     static bool is_float(const std::string & literal);
