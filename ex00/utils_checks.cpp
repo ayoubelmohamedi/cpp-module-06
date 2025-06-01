@@ -5,7 +5,7 @@
 
 bool ScalarConverter::is_char(const std::string & literal)
 {
-    if (literal.length() == 1 && isalpha(literal[0]))
+    if (literal.length() == 1 && !isdigit(literal[0]))
         return (true);
     return (false);
 }
