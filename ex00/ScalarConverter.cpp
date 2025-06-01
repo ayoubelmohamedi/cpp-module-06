@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
+/*   By: ael-moha <ael-moha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 01:31:28 by ael-moha          #+#    #+#             */
-/*   Updated: 2025/05/30 22:31:35 by macbookpro       ###   ########.fr       */
+/*   Updated: 2025/06/01 19:11:02 by ael-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void to_char(const std::string &literal)
 void to_int(const std::string &literal)
 {
     long d = static_cast<long>(std::atol(literal.c_str()));
-    double l = std::stod(literal.c_str());
+    double l = std::strtod(literal.c_str(), NULL);
 
     if (d < 0 || d > 127)
         std::cout << "char: impossible" << std::endl;
@@ -83,8 +83,8 @@ void to_int(const std::string &literal)
 
 void to_float(const std::string &literal)
 {
-    float val = std::stof(literal.c_str());
-    double d = std::stod(literal.c_str());
+    float val = std::strtof(literal.c_str(), NULL);
+    double d = std::strtod(literal.c_str(), NULL);
     
     if (std::isnan(val) || std::isinf(val) || val < 0 || val > 127)
         std::cout << "char: impossible\n";
@@ -108,8 +108,8 @@ void to_float(const std::string &literal)
 
 void to_double(const std::string &literal)
 {
-    double val = std::stod(literal.c_str());
-    float f = std::stof(literal.c_str());
+    double val = std::strtod(literal.c_str(), NULL);
+    float f = std::strtof(literal.c_str(), NULL);
 
     if (std::isnan(val) || std::isinf(val) || val < 0 || val > 127)
         std::cout << "char: impossible\n";
