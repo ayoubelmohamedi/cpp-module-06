@@ -6,7 +6,7 @@
 /*   By: ael-moha <ael-moha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 01:31:28 by ael-moha          #+#    #+#             */
-/*   Updated: 2025/06/01 23:08:38 by ael-moha         ###   ########.fr       */
+/*   Updated: 2025/06/01 23:49:41 by ael-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,45 +40,21 @@ void ScalarConverter::convert(const std::string &literal)
         std::cout << "Error: Empty input" << std::endl;
         return;
     }
-     double value;
-
-    // if (literal == "nan" || literal == "nanf")
-    // {
-    //     std::cout << "char: impossible" << std::endl;
-    //     std::cout << "int: impossible" << std::endl;
-    //     std::cout << "float: nanf" << std::endl;
-    //     std::cout << "double: nan" << std::endl;
-    //     return;
-    // }
-    // else if (literal == "inf" || literal == "+inf" || literal == "inff" || literal == "+inff")
-    // {
-    //     std::cout << "char: impossible" << std::endl;
-    //     std::cout << "int: impossible" << std::endl;
-    //     std::cout << "float: inff" << std::endl;
-    //     std::cout << "double: inf" << std::endl;
-    //     return;
-    // }
-    // else if (literal == "-inf" || literal == "-inff")
-    // {
-    //     std::cout << "char: impossible" << std::endl;
-    //     std::cout << "int: impossible" << std::endl;
-    //     std::cout << "float: -inff" << std::endl;
-    //     std::cout << "double: -inf" << std::endl;
-    //     return;
-    // }
+    double value;
 
     if (literal.length() == 1 && !std::isdigit(literal[0]))
         value = static_cast<double>(literal[0]);
     else
     {
-        
         char *end;
+        errno = 0;
         float f = std::strtof(literal.c_str(), &end);
         if (*end != '\0' || errno == ERANGE)
         {
             std::cout << "Error: Invalid input" << std::endl;
             return;
         }
+        std::cout << " is float " << std::endl;
         value = static_cast<double>(f);
     }
 
