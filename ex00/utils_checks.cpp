@@ -81,15 +81,19 @@ bool ScalarConverter::is_nan(double d)
 {
     return (d != d);
 }
+
 bool ScalarConverter::is_inf(double d)
 {
     return (!is_nan(d) && (d + d == d));
 }
+
 bool ScalarConverter::is_nanf(float f)
 {
     return (f != f);
 }
+
 bool ScalarConverter::is_inff(float f)
 {
     return (!is_nanf(f) && (f + f == f));
 }
+
