@@ -43,3 +43,8 @@ void Data::setName(std::string &name)
 {
     this->_name = name;
 }
+
+std::ostream &operator<<(std::ostream &os, const Data &data) {
+    os << "Data(name: " << data.getName() << ", n: " << data.getNumber() << ")";
+    return os;
+}
