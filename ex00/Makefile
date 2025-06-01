@@ -2,7 +2,7 @@
 CXX      := c++						
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98
 
-SRCS := ScalarConverter.cpp main.cpp utils_checks.cpp
+SRCS := ScalarConverter.cpp main.cpp
 OBJS := $(SRCS:.cpp=.o)
 NAME := convert
 

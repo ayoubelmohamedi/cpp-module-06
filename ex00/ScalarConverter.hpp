@@ -6,7 +6,7 @@
 /*   By: ael-moha <ael-moha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 01:32:27 by ael-moha          #+#    #+#             */
-/*   Updated: 2025/06/01 20:48:37 by ael-moha         ###   ########.fr       */
+/*   Updated: 2025/06/01 22:57:20 by ael-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,15 @@
 #include <cerrno>
 
 class ScalarConverter {
-private:
     ScalarConverter();
-    static bool is_char(const std::string & literal);
-    static bool is_int(const std::string &literal);
-    static bool is_float(const std::string & literal);
-    static bool is_double(const std::string &literal);
-    static bool is_float_ps(const std::string &literal);
-    static bool is_double_ps(const std::string &literal);
-
-    static void to_double(const std::string &literal);
-    static void to_float(const std::string &literal);
-    static void to_char(const std::string &literal);
-    static void to_int(const std::string &literal);
-
-    static bool is_nan(double d);
-    static bool is_inf(double d);
-    static bool is_nanf(float f);
-    static bool is_inff(float f);
-    
+    ScalarConverter(const ScalarConverter &other);
+    ScalarConverter &operator=(const ScalarConverter &other);
+    ~ScalarConverter();
     
     
 public:
     static void convert(const std::string& literal);
-    
+
 };
 
 
