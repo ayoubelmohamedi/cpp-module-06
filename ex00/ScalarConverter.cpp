@@ -6,7 +6,7 @@
 /*   By: ael-moha <ael-moha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 01:31:28 by ael-moha          #+#    #+#             */
-/*   Updated: 2025/06/01 19:11:02 by ael-moha         ###   ########.fr       */
+/*   Updated: 2025/06/01 19:57:10 by ael-moha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@
 
 void to_char(const std::string &literal)
 {
+
+    std::cout << "to_char" << std::endl;
     char c = static_cast<char>(literal[0]);
    
     if (!isprint(c))
@@ -58,6 +60,7 @@ void to_char(const std::string &literal)
 
 void to_int(const std::string &literal)
 {
+    std::cout << "to_int" << std::endl;
     long d = static_cast<long>(std::atol(literal.c_str()));
     double l = std::strtod(literal.c_str(), NULL);
 
@@ -83,8 +86,8 @@ void to_int(const std::string &literal)
 
 void to_float(const std::string &literal)
 {
+    std::cout << "to_float" << std::endl;
     float val = std::strtof(literal.c_str(), NULL);
-    double d = std::strtod(literal.c_str(), NULL);
     
     if (std::isnan(val) || std::isinf(val) || val < 0 || val > 127)
         std::cout << "char: impossible\n";
@@ -98,16 +101,14 @@ void to_float(const std::string &literal)
         std::cout << "int: impossible" << std::endl;
     else
         std::cout << "int: " << static_cast<int>(val) << std::endl;
-
-    if (val != d) 
-        std::cout << "float: impossible" << std::endl;
-    else
-        std::cout << "float: " << std::fixed << std::setprecision(1) << val << "f" << std::endl;
+    
+    std::cout << "float: " << std::fixed << std::setprecision(1) << val << "f" << std::endl;
     std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(val) << std::endl; 
 }
 
 void to_double(const std::string &literal)
 {
+    std::cout << "to_double" << std::endl;
     double val = std::strtod(literal.c_str(), NULL);
     float f = std::strtof(literal.c_str(), NULL);
 
