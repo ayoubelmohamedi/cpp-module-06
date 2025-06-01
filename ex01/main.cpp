@@ -1,15 +1,14 @@
 
 
-
-#include <iostream>
-#include <iomanip>
+#include "Serializer.hpp"
 
 
 
 int main() {
-    int i = 1065353216; // This is the bit pattern of float 1.0f
-    float f = reinterpret_cast<float&>(i);
-
-    std::cout << "Int: " << sizeof(int) << "\n";
-    std::cout << "Float: " << sizeof(float) << "\n";  // Output: 1.0
+    
+    Data data("Sam", 5);
+    uintptr_t ptr =  Serializer::serialize(&data);
+    std::cout << ptr << std::endl;
+    std::cout << Serializer::deserialize(ptr) << std::endl;
+    std::cout << *Serializer::deserialize(ptr) << std::endl;
 }
