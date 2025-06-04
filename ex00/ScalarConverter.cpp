@@ -64,12 +64,11 @@ void ScalarConverter::convert(const std::string &literal)
         }
         char *end;
         errno = 0;
-        float f = std::strtof(to_parse.c_str(), &end);
+        value = std::strtod(to_parse.c_str(), &end);
         if (*end != '\0' || errno == ERANGE) {
             std::cout << "Error: Invalid input" << std::endl;
             return;
         }
-        value = static_cast<double>(f);
     }
 
     // Char output
