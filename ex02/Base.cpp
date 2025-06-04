@@ -50,3 +50,7 @@ void identify(Base &p)
         return;
     } catch (std::bad_cast&) {}
 }
+
+Base::~Base() {
+    std::cout << "Base destructor called" << std::endl;
+}
