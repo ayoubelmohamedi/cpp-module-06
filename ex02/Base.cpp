@@ -16,8 +16,7 @@ Base *generate(void)
         return (new A());
     if (n == 1)
             return (new B());
-    if (n == 2)
-            return (new C());
+    return (new C());
 }
 
 
