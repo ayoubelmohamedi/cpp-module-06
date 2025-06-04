@@ -39,7 +39,7 @@ void identify(Base &p)
     } catch  (...){}
 
     try {
-        (void)dynamic_cast<B&>;
+        (void)dynamic_cast<B&>(p);
         std::cout << "B" << std::endl;
         return;
     } catch (...) {}
