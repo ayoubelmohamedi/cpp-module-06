@@ -4,7 +4,7 @@ CXXFLAGS := -Wall -Wextra -Werror -std=c++98
 
 SRCS := Base.cpp main.cpp
 OBJS := $(SRCS:.cpp=.o)
-NAME := convert
+NAME := dynamic_cast
 
 all: $(NAME)
 
